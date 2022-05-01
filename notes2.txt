@@ -1,0 +1,104 @@
+2/16/2022
+
+What Bart Wrote on the Board:
+	P6 Questions
+	2 demos
+	bit blt
+	Test practice
+
+P6 Questions
+	Don't forget:
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		if mode is perspective
+		glEnable(GL_DEPTH_TEST);
+		glLoadIdentity();
+		glLookAt();
+		else
+		glDisable();
+	
+		load identity anyways :)
+
+	Separate 2D and 3D projections by using functions
+		if mode is perspective
+			SetPerspective();
+		else
+			SetOrthographic();
+	
+	On keystrokes, call either SetPerspective or SetOrthographic
+		T is the only one that will use SetOrthographic
+
+	All of that stuff is in reshape... so make sure you call those perspective functions when keys are used
+
+	In set perspective functions, don't forget to include glMatrixMode()
+		start in GL_PROJECTION and end in GL_MODELVIEW
+
+	Colors are being weird
+		Problem: drawing walls with two different colors on each side... they don't know which one to display
+		One color per wall (both sides)
+		OR
+		Don't draw both sides... only draw left walls or right walls?
+			There are problems with this though?
+			SO, unless it's the right cells, only draw the left walls
+			Same for top to bottom
+bit blt
+	
+	The code is posted in semester notes
+	Not actually bit blT... it is a texture map
+		Which is actually the next assignment
+		But with transparency
+	Do texture maps over lots of geometry 
+	in Init... imageFiles is what picks the image
+		lots of stuff
+	In display()
+		drawRat()
+			enable textures -- glEnable(GL_TEXTURE_2D);
+			enable
+				GL_BLEND
+			Blend and bind
+			Textures go from 0 to 1 
+
+Test
+	Looks like you need trig :)
+	Ray-shows are back
+		World to screen stuff
+	Memorize alllll the trig stuff
+	Length of vector
+		double Length(vector v) {
+			double l = v.dx * v.dx + v.dy * v.dy + v.dx * v.dy;
+			double l = sqrt(l);
+			return l;
+		}
+	Normalize vector
+		void Normalize(vector &v) {
+			l = Length(v);
+			//other things that he just erased :(
+	Normalize triangle thingy
+		vector GetTriangleNormal(const Triangle &triangle) {
+			vector aToC = c - a;
+			vector aToB = b - a;
+			vector w = crossProduct(aToC, aToB);
+			Normalize(w);
+		}
+		
+		You don't have to memorize crossProduct :)
+
+	Get Angle
+		double getAngle(vector u, vector v) {
+			//normalize
+			Normalize(u);
+			Normalize(v);
+			double d = u.dx * v.dx + u.dy * v.dy + u.dz * v.dz //dot product
+			//angle between is...
+			double a = acos(d);
+			return a;
+		}
+
+	Interpolate
+		point interpolate(point a, point b, double t) {
+			return (1-t) * a + t * b;
+		}
+
+	#5 on 2nd test
+		return A + D * T;
+
+	Rastor is pixel

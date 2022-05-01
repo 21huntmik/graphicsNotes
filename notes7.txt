@@ -1,0 +1,124 @@
+3/23/2022
+
+Lots of things on the board:
+	gluPerspective
+	The board
+	Display Lists
+	Victoria's Pieces
+	Curved Movement
+	Revolve and Lighting
+	Explosion
+	Kirby Game
+
+The board
+	Make sure that the board uses gl normals
+		(0, 0, -1) for the front of the board
+	
+	for(int i=1000; i <= 8000; i+=1000) {
+		if(i+j%2000==0) {
+			white square
+		}
+	}
+
+gluPerspective
+	gluPerspective(
+		/*field of view*/ 38.0,
+		/*aspect ratio*/ aspectRatio,
+		/*z near*/ 1000.1,
+		/*z far*/ 30000.0);
+
+Display Lists
+	Code Display Lists on notes page
+
+	enum piece_numbers{pawn=100,king, queen, rook, bishop, knight};
+
+	glNewList(pawn, GL_COMPILE);
+	DrawPiece("PAWN.POL");
+	glEndList();
+
+	glPushMatrix();
+	glTranslate(1000, 0, 700);
+	glCallList(pawn);
+	glPopMatrix();
+
+	Makes the speed of the animation much faster
+
+	In initialize, create lists
+	In display, display lists
+
+	All of the same pieces are a part of the same list, just translated to a different location and the color of the material
+
+	Record only things that can be reused... pieces not translations
+
+Victoria's Pieces
+	Only pay attention to lines that start with v, 
+	
+	V = vertex (x, y, z)
+		Store in something
+		Make points
+	VN = vertex normal (normal something something)
+		Store in something
+		array
+		Make vector
+	F = faces
+		Connects
+		Quads and polygons
+		How to determine what to make out of these
+			Read as string, convert to int
+			#//#
+				First number is index into array
+				Middle number (hidden) index into texture map
+			glBegin()
+			glQuads()
+			normal
+			pass in index
+			glVertex()
+			normal
+			pass in index
+			glVertex3d
+			
+			repeat until glEnd()
+
+Curved movement
+	if(time<9) 
+		point_interpolation(5,time,7 5000, 0, 7000, px, py, pz, 5000, 0, 5000);
+	else 
+		point_interpolation(15, time, 16, 5000, 0, 5000, px, py, pz, 4500, 0, 5500);
+	if(time>=17 && t<=19) 
+		glScalef(1, .5*(19-time), 1);
+	}
+	
+	I don't really know why we need this
+
+	Linear interpolation
+	
+	Interpolate(t, 3.0, 6.0, 4000, 0, 1000, 3000, 0, 3000, x, y, z);
+	glTranslatef(x, y, z);
+
+	Quadratic Interpolate
+
+		QuadraticInterpolate(t, 3.0, 6.0, 
+			4000, 0, 1000,
+			4000, 0, 3000, 
+			3000, 0, 3000, x, y, z);
+
+		QuadraticInterpolate(double t, double t0, double t1,
+			double x0, double y0, double z0,
+			double x1, double y1, double z1,
+			double x2, double y2, double z2,
+			double& x, double& y, double& z) {
+				double ratio = (t - t0) / (t1 - t0);
+				if (ratio < 0) {
+					ratio = 0;
+				if (ratio > 1)
+					ratio = 1;
+				x = (1 - ratio) * (1 - ratio) * x0 + 2 * (1 - ratio) * ratio * x1 + ratio * ratio * x2
+				y                               y0
+				z                               z0
+
+Revolve & Lighting
+	glutSolidSphere(radius, slices, stacks);
+		There is also wire sphere, etc.
+
+	
+					

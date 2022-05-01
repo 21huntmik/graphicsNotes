@@ -1,0 +1,47 @@
+4/25/2022
+
+On the board:
+	Final Exam
+	Ray Tracing
+	Faculty Evaluations
+	How to get a Graduate Degree
+	Robby the Robot - on Steroids
+	Speeding Things up
+
+- Final Exam -
+
+	Ray Tracing on the final??
+		Maybe shadows
+			I took notes on that :)
+		No transparency, no refraction, no drawing (art class at that point)
+		Probably no raytracing
+	Comprehensive
+	Most likely 4/5?
+		Sounds about right
+	Isn't written yet 
+
+- Ray Tracing 2 -
+
+	The model doesn't have to look good
+		Can be random spheres
+
+- Evaluations -
+
+	Link in Canvas
+	Extra Credit :)
+
+- Graduate Degree -
+
+	Basically research, which is cool
+	Read other research papers or go to conferences to get ideas
+	Things need to be peer reviewed
+
+- Robby the Robot -
+
+	Not actually Robby the Robots
+	Game character
+		Crazy detailed
+
+- Speeding things Up -
+
+	On Wednesday

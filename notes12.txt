@@ -1,0 +1,14 @@
+Ray Tracing Triangles
+
+Complex shapes are put into bounding containers. If the ray does not intersect container, ignore
+
+Ax + By + Cz + D = 0 ?? I can't see it ??
+
+Math?
+
+e + r * t
+Px = ex + rx * t
+Py = ey + ry * t
+Pz = ez + rz * t
+
+

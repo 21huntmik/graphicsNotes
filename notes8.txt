@@ -1,0 +1,45 @@
+4/4/2022
+
+Bezier Curve Formulas
+Linear Interpolation
+	
+	Degree One
+	Straight line
+
+		P(t) = (1-t)p0 + t * p1
+
+	Degree Two
+	Curve with one defining point
+
+		P(t) = (1-t)^2 * p0 + 2(1-t)Tp1 + t^2p2
+
+	Degree Three
+	Curve with two defining points
+		
+		P(t) = (1-t)^3p0 +3(1-t)^3tp1 + 3(1-t)t^2p2 +t^3p3
+
+	Degree Four
+	Curve with three defining points
+
+		P(t) = (1-t)^4p0 +4(1-t)^3tp1 + 6(1-t)^2t^2p2 + 4(1-t)^1t^3p3 + T^4p4
+
+Just like
+
+1
+11
+121
+1331
+14641
+
+How to convert to x and y
+
+	One formula for x and one for y
+	3D would include z
+	Do it twice, once for x and once for y
+
+Connecting 3 Degree Curves
+
+	Isn't a smooth transition
+	Control points need to line up to make it smooth
+	You could implement a snap feature to line up curves
+	A setting to automatically make it a smooth transition

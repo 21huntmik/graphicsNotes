@@ -1,0 +1,35 @@
+4/11/2022
+
+Ray Tracing 1
+	Ray tracing is pixel by pixel
+	
+	void Scene::CalculateRightAndUp() {
+		first_time = false;
+		
+		//Calculate Forward Vector
+		forward = at - eye;
+		
+		//Normalize Forward Vector
+		forward.Normalize();
+		
+		//Right Vector is Forward Cross Up
+		right = CrossProduct(forward, up);
+
+		//Normalize right
+		right.Normalize();
+	
+		//Reset Up vector to be right cross forward
+		up = CrossProduct(right, forward);
+	
+		//Set World window corners to be a little in front of the eye
+		double u = tan(fov/2.0 * 3.1419526 / 180); //convert
+		double r = u * screen_x / screen_y; //pay attention to types (ints and floats)
+		ww_tr = eye + forward + u * up + r * right;
+		ww_tl = eye + forward + u * up - r * right;
+		ww_br = eye + forward - u * up + r * right;
+		ww_bl = eye + forward - u * up - r * right;
+	}
+
+	void Scene::CreateRay(int x, int y, Vector3 &ray) {
+		if(first_time) {
+			CalculateRight ... to be continued

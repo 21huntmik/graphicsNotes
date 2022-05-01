@@ -1,0 +1,30 @@
+3/21/2022
+
+TEST
+	Next Wednesday
+
+TERRAIN
+	Within gluLookAt(x,y,z, at_x, at_y, 0,0,1);
+		x,y,z are from rat by using GetX(), GetY(), GetZ(x,y)
+			GetZ(x,y) {
+				float terrainHeight = function(xpos, ypos);
+				if(terrainHeight < waterHeight) {
+					terrainHeight = waterHeight;
+				}
+				float z = terrainHeight + flyingHeight;
+				return z
+			}
+
+		GetD[X,Y]Unscaled();
+			Use a big dy and dx so it is smooth
+
+		Do GetZ() again with new dy and dx and that is z2
+
+		at_x = x + dx;
+		at_y = y + dy;
+
+		float downward_tilt = .30;
+		float at_z = z2 - downward_tilt;
+
+CHESS
+	We looked at examples

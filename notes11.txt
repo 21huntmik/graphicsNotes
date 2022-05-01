@@ -1,0 +1,96 @@
+I think this is in cast ray
+
+if(closest_hit_sphere != -1) {
+
+	//r = g = b = .5; was here for last assignment
+	
+	//init r, g, b to ambient light
+	r = s[closest_hit_sphere].ambient[0];
+	g = s[closest_hit_sphere].ambient[1];
+	b = s[closest_hit_sphere].ambient[2];
+
+	//loop through all light sources, adding diffuse and specular
+	for (int l = 0; l < this->num_point_lights; l++) {
+		//Diffuse light
+		Vector3 toLight = this->pl[l] - closest_point;
+		toLight.Normalize();
+		double dot = DotProduct(toLight, closest_normal); //between 1 and -1
+		if (dot > 0) {
+			//diffuse light is here
+			r += s[closest_hit_sphere].diffuse[0] * dot;
+			g += s[closest_hit_sphere].diffuse[1] * dot;
+			b += s[closest_hit_sphere].diffuse[2] * dot;
+			
+			//test diffuse before moving on the specular
+
+			//Specular light
+			
+			Vector3 toEye = eye - closest_point;
+			toEye.Normalize();
+	
+			Vector3 sum = toEye + toLight;
+			sum.Normalize();
+
+			double dot2 = DotProduct(sum, closest_normal);
+			if(dot2 > 0) { //specular light is here
+				double contribution = pow(dot2, s[closest_hit_sphere].specular_exponent);
+				r += s[closest_hit_sphere].specular[0] * contribution;
+				//same for g and b 				
+			}
+		}
+
+		if (r > 1.0) {
+			r = 1.0;
+		}
+		//do the same for g and b
+	}
+
+} else {
+	
+	r = g = b = .0;
+}
+
+
+
+Diffuse Light Math
+	
+	Look at the picture he drew on the board (4/18/2022)
+
+bool RayIntersectSphere(...) {
+	//set distance to the smallest positive value between t1 and t2
+	intersection_point = eye + ray * distance;
+	intersection_normal = intersection_point - s.origin;
+	intersection_normal.Normalize();
+}
+
+Ambient should look very dark with slight colors. Flat shapes.
+Diffuse should add general highlights and shadows. Still somewhat flat. You can tell which direction the lights are in.
+Specular should add more highlights. Makes things look shiny :)
+
+Should look different from openGl when finished
+
+Should make your own model for pass off 
+
+How to make SHADOWS!
+
+	before Diffuse lights:
+
+		//check for shadows
+		for (int j = 0; j < num_spheres; j++) {
+			if(RayIntersectionSphere(closest_point, vector_to_light, s[j], dumbdistance, dumbintersection_point, dumbintersection_normal)) {
+			if (not blocked) {
+				do specular and diffuse lighting
+			} else {
+				do nothing
+			}
+	Much easier than I thought it would be. Cool.
+
+How to make shadows more realistic:
+
+	Make light sources bigger? Is that all?
+
+Transparency:
+
+	It's transparent but also reflective
+
+	He said splitting and hitting a lot but I really did not catch much

@@ -1,0 +1,80 @@
+3/7/2022
+
+Today:
+	Terrain
+	Help on Terrain
+	Demos
+	Textures
+
+TERRAIN
+	
+	Two views:
+		First person
+		Perch
+
+	You will need water, valleys, and mountains in your assignment
+		If you are going down hill, your perspective will tilt down
+		If you are going up hill, your perspective will tilt up
+
+	Terrain function will generate z values
+	
+	Terrain is usually not made like this for real games
+		Similar, but not quite
+
+	Sometimes random fractals are used to generate terrains
+		Rough mountains
+
+	Or use sin and cos just like we are doing for this assignment
+		Smooth hills
+
+	Instructions:
+		Make a grid 100 x 100
+			It will be flat at first
+		
+		You could start with the maze assignment if you want, you just won't need the walls
+			Probably just start over. Reusing maze is complicated. Use it as a reference.
+
+		Start with perch view and then move onto first person
+
+		How to make the hills -- assigning height
+			float function(float x, float y) {
+				float z = 0;
+				float zscale = 0.75;
+				z += 2*sin(.4*y);
+				z += 1.5*cos(.3*x);
+				z += 4*sin(.2*x)*cos(.3*y);
+				z += 6*sin(.11*x)*cos(0.03*y);
+				return z*zscale;
+			}
+
+			//he also has these above the function but said not to include them
+			float X[resolution+1][resolution+1];
+			float Y[resolution+1][resolution+1];
+			float Z[resolution+1][resolution+1];
+
+			//basically all you need to do is change the numbers for zscale
+			//make them kind of random
+
+			//multiply outside, it makes it taller
+			//multiply inside the (), it changes the amount of peaks
+
+			//subtract or add inside (), shifts starting point, shifts x
+			//subtract or add outside, shifts y 
+		
+		"Your first attempts are going to look dumb" - Bart
+
+		It would be super cool if you had different textures depending on the height of the tile
+			Then you could have snow on the tops of the hills and flowers in the valleys :)
+			You would still have to tile this way
+			Use images that are MADE for tiling. Repeating patterns. Just search seamless patterns.
+			Or be smart like Levi :)
+				Reflect your images in Photoshop 4 times and that will be your new tile
+
+		Or you could do solid colors and your program will do shading for you
+
+		"it's too old" - Bart about his sample code
+
+		There's a sample project that has music
+			And fog
+
+		And there was that weird truck one too

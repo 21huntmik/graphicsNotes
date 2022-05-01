@@ -1,0 +1,10 @@
+FINAL
+
+	Bouncing Circles will probably be there
+
+	No Ray Tracing
+
+	Bezier will probably be there
+		Expand to 5 control points?
+
+	Maybe make a scene

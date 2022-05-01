@@ -1,0 +1,51 @@
+Key points:
+	Bart sang a song
+
+Things Written on the Board:
+	Texture Questions
+	Book Learning
+	Homer goes 3D
+
+TEXTURES:
+	Rolling textures
+		Start at the bottom and roll to the top
+	
+BOOK:
+	Math stuff
+		P(T) = A + D * T
+		Moving along a vector
+	
+		P(S,T) = A + U * S + V * T
+		
+		Give points in counter-clockwise order
+
+		24 bytes per vertex
+
+		576 bytes to make a cube when saving vectors
+
+		2 bytes per index numbers
+
+		240 bytes to make a cube when saving points
+
+	Shading
+		If you are in color mode:
+			When you have different colors for each point it will make a gradient?
+
+	Current Transformation Matrix
+		Multiplies all of the translations before multiplying it to create the output
+
+	For matrix details just go watch the zoom. I don't know what's happening.
+		He said he doesn't expect you to memorize it, so I guess that's good.
+
+	More than one window
+		glutCreateWindow("Window One");
+		glutCreateWindow("Window Two");
+		
+		You could:
+			int id2 = glutCreateWindow("Window Two");
+			
+			Why though?
+	
+		glutSetWindow("id1");
+			
+			That's why

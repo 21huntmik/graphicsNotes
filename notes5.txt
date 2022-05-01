@@ -1,0 +1,99 @@
+Bart sang another song
+
+Terrain Questions:
+	When in rat view, the view moves up and down (the rat itself doesn't have to tilt)
+	
+		How to tilt:
+			Bart doesn't know
+			~Magic~
+			Cross product of dy and dx vectors
+			How to rotate with that info
+				He still doesn't know
+
+	How to move the water up and down:
+		Calculate the time since the program started using clock function
+			Divide by clocks per second
+		Using t
+		Sin function to smoothly transition
+		Plugged t into sin function
+
+		void AdjustWaterHeight(double t) {
+			waterHeight = -2 (base height) + .2*sin(t);
+		}
+		//Where t is time since program started
+
+		double GetEllapsedSeconds() {
+			static int lastMilliseconds = 0;
+			int currentMilliseconds = glutGet(GLUT_ELAPSED_TIME);
+	
+			//other stuff that I didn't catch :)	
+		}
+		
+		GetFramesPerSecond() {
+			static int frames=0;
+			static clock_t start_time = clock();
+			
+			frames++;
+			clock_t current = clock()+0.0001;
+			double ellapsed_time = double(current-start-time)/double(CLOCKS_PER_SECOND);
+			double frames_per_second = double(frames/ellapsed_time);
+			return frames_per_second;
+		}
+
+			
+		AdjustWaterHeight(glutGet(GLUT_ELAPSED_TIME)*.001);
+		
+		There's lots of stuff in his code that could be making this work or could just be there
+
+Chess:
+	Chess will be on the midterm
+
+	It will be due before the midterm, but you can turn it in the Monday after but not suggested
+
+	Load data from a file
+
+	Display Lists?
+
+	Lighting
+		
+	Use polygons and drawBox() to replace quads --> On the midterm when it said to have thicker walls
+		Also needs to be used on this assignment
+
+	You need the Starter Chess file and the Revolving and Lighting file
+
+	glEnable(GL_LIGHTING); //general lighting
+	glEnable(GL_LIGHT0); //30 something lights
+
+	You can change the color of the light!!
+		change white_light[] = {1,1,1,1};
+	
+	Specular light?
+		He doesn't know what this is, but I guess you will still need it 
+
+	Once you do lighting, everything changes
+		glColor3d has no affect now
+			Now what do we do?
+				It's determined by light and material I guess
+
+	When doing animations, use GetTime();
+		using static clock() and other math things
+
+	To set color, use glMaterial
+		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff1); //f - floats v - vector GL_FRONT - front facing 
+
+		Ambient - 
+
+		Specular highlight is a different color
+		
+		Diffuse - main color of an object
+
+	Pass in normal vectors first or else everything will be broken because of lighting
+
+	Interpolation()
+		"It's just a racial problem"
+		This function is actually really nice though
+
+	Lights take 4 parameters, if last is 0, it is a direction
+		if last is 1, it is a light position
+
+	

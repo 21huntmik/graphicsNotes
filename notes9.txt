@@ -1,0 +1,107 @@
+4/6/2022
+
+MENU
+
+	int sub_menu = glutCreateMenu(color_menu);
+	glutAddMenuEntry("red", 1);
+	glutAddMenuEntry("orange", 2);
+
+	glutCreateMenu(top_menu);
+	glutAddMenuEntry("quit", 1);
+	glutAddMenuEntry("Add Curve", 2);
+	glutAddSubMenu("Set Color", sub_menu);
+	glutAttachMenu(GLUT_RIGHT_BUTTON);
+	
+	void color_menu(int id) {
+		//if sub_menu returns 1 change color to red etc.
+	
+	void top_menu(int id) {
+		if(id==1) 
+			exit==(0)
+		else if id ==2
+			addCurve();
+
+CLICKING
+	
+	glutDisplayFunc(display);
+	glutKeyboardFunc(keyboard);
+	glutReshapeFunc(reshape);
+	glutMouseFunc(mouse);
+	glutMotionFunc(motion);
+
+	//global
+	int selected_point = -1;
+	int selected_curve = -1;
+	int last_selected_curve = 0;
+
+	void mouse(int mouseButton, int state, int x, int y) {
+		if (mouse_button == glut_left_button && state == glut_down)
+			selected_point = -1;
+			selected_curve = -1;
+			for int i=0; i < currentcurves; i++
+				selected point = b[i].isPicked(x, y);
+				lastselectedcurve = selectedcurve
+				
+
+	void motion(int x, int y) 
+		y = screen_y -y -1
+		if selected point != -1
+			b[selectedcurve].p[selectedpoint].x = x;
+			b[selectedcurve].p[selectedpoint].y = y;
+			glutPostRedisplay();
+
+De Casteljau adds subdivision
+	Half way between points
+		half way between p0 handle 1, handle 2, p1
+			half way between new points
+				half way between new points
+					half way between new pooints
+		there should be 10 points and the end
+
+	You could subdivide in any way you want
+		3/4
+		1/2
+		whatever you want
+
+Derivitive curves
+
+	dx dy at a given point
+
+	Degree three curve will give a degree 2 derivitive curve
+		d0 = 3(p1 - p0) (x and y)
+		d1 = 3(p2 - p1)
+		d2 = 3(p3 - p2)
+Weights
+	increasing the "height" of the curve without adjusting the slope
+	
+	What is the math for weight???
+		BEFORE
+
+			p(t) = (1-t)^3 * p0 + 3(1-t)^2 * t * p1 + 3 * (1-t) * t^2 * p2 + t^3 * p3
+
+		WEIGHTED
+
+			p(t) = w0(1-t)^3 * p0 + w1 * 3(1-t)^2 * t * p1 + w2 * 3(1-t) * t^2 * p2 + w3 * t^3 * p3
+			_______________________________________________________________________________________
+
+			            w0(1-t)^3 + w1 * 3(1-t)^2 * t + w2 * 3(1-t) * t^2 + w3 * t^3
+
+Bsplines?
+	
+	Many connected curves that don't go through the control points, but approaches them
+	The curve goes between the middle two of the four points
+	Smooth connections
+
+	Knot vector?
+		degree three -> [012345] as curve goes from 2 to 3?
+		first (0-1) and end are not used for curves
+
+	There is a weird way to convert but I didn't know how to type it out
+
+	Non Uniform Bspline curves
+		
+		You can add speed by adjusting the points
+		Instead of 2-3, you could do 2-3.5 or 2-4
+			Just make sure you have 2 extra points to start and at the end
+
+	Non uniform weighted bspline curves -- The best I guess
